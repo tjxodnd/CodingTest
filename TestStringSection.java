@@ -3,8 +3,11 @@ import java.util.Scanner;
 
 class TestStringSection {
 
-	/* 숫자 n, n개의 단어를 입력받았을때 뒤집힌 String이 들어있는 ArrayList<String> 을 return하시오.
-	//단어 뒤집기(StringBuilder) 이용
+
+	/*
+	// 
+	//숫자 n, n개의 단어를 입력받았을때 뒤집힌 String이 들어있는 ArrayList<String> 을 return하시오.
+	//4. 단어 뒤집기(StringBuilder) 이용
 	public static void main(String[] args) {
 		TestStringSection T = new TestStringSection();
 		Scanner kb = new Scanner(System.in);
@@ -51,7 +54,7 @@ class TestStringSection {
 	}
 	
 	//입력받은 문자열중 특수문자열이 아닌 알파벳만 위치를 뒤집어서 return 하시오.
-	//특수문자(알파벳이 아닐때) 뒤집기(toCharArray[])
+	//5.특수문자(알파벳이 아닐때) 뒤집기(toCharArray[])
 	public String solutionSpecial(String str) {
 		String answer;
 		char[] s = str.toCharArray();
@@ -82,7 +85,7 @@ class TestStringSection {
 	}
 	
 
-	//중복문자제거해서 return 하시오.
+	//6.중복문자제거해서 return 하시오.
 	public static void main(String[] args) {
 		TestStringSection T = new TestStringSection();
 		Scanner kb = new Scanner(System.in);
@@ -105,7 +108,7 @@ class TestStringSection {
 
 	//회문문자열 palindrome - 앞에서 읽을때나 뒤에서 읽을때나 같은 문자열을 회문 문자열이라고 함
 	//ex) wow, goog, 
-	//회문문자열일 경우 YES를 return , 아니면 NO를 return 하시오
+	//7.회문문자열일 경우 YES를 return , 아니면 NO를 return 하시오
 
 	public static void main(String[] args) {
 		TestStringSection T = new TestStringSection();
@@ -136,5 +139,72 @@ class TestStringSection {
 			return "NO";
 		}
 	}
+	
+
+	//8. 유효한 팰린드롬(replaceAll 정규식이용)
+	public static void main(String[] args) {
+		TestStringSection T = new TestStringSection();
+		Scanner kb = new Scanner(System.in);
+		String str = kb.nextLine();
+		System.out.println(T.solutionDuplDel(str)); 
+	}
+
+	public String solutionDuplDel(String str) {
+		//replace에는 정규식 사용가능
+		str = str.toUpperCase().replaceAll("[^A-Z]","");
+		
+		//문자열을 뒤집어서 비교
+		String tmp = new StringBuilder(str).reverse().toString();
+		//equalsIgnoreCase = 대소문자 구분 안함
+		if(str.equals(tmp)){
+			return "YES";
+		} else {
+			return "NO";
+		}
+	}
+	
+
+	// 9.숫자만추출
+	public static void main(String[] args) {
+		TestStringSection T = new TestStringSection();
+		Scanner kb = new Scanner(System.in);
+		String str = kb.nextLine();
+		System.out.println(T.solutionDuplDel(str)); 
+	}
+
+	public int solutionDuplDel(String str) {
+		String answer = "";
+		//replace에는 정규식 사용가능
+		for(char x : str.toCharArray()){
+			if(Character.isDigit(x)){
+				answer+=x;
+			}
+		}
+		return Integer.parseInt(answer);
+	}
 	*/
+
+	//10. 가장 짧은 문자거리
+	//문제 : 첫번째줄에 문자열s와 문자t가 주어진다. 문자열과 문자는 소문자로만 주어짐, s의 각문자가 t와 떨어진 거리를 순서대로 출력한다
+	//input : teachermode e
+	//output : 10121012210
+	public static void main(String[] args) {
+		TestStringSection T = new TestStringSection();
+		Scanner kb = new Scanner(System.in);
+		String str = kb.nextLine();
+		String t = kb.nextLine();
+		System.out.println(T.solutionDuplDel(str,t)); 
+	}
+
+	public int solutionDuplDel(String s, String t) {
+		String answer = "";
+
+		for(int i = 0; i < s.length(); i++) {
+			// System.out.println(s.charAt(i) + " " + i + " " + s.indexOf(s.charAt(i)));
+			System.out.println(s.split(t));
+		}
+		
+		
+		return Integer.parseInt(answer);
+	}
 }
