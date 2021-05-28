@@ -87,7 +87,7 @@ class TestStringSection {
 		TestStringSection T = new TestStringSection();
 		Scanner kb = new Scanner(System.in);
 		String str = kb.next();
-		System.out.println(T.solutionDuplDel(str));
+		System.out.println(T.solutionDuplDel(str)); 
 	}
 
 	public String solutionDuplDel(String str) {
