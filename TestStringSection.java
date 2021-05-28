@@ -101,12 +101,40 @@ class TestStringSection {
 		}
 		return answer; 
 	}
-	*/
+	
 
 	//회문문자열 palindrome - 앞에서 읽을때나 뒤에서 읽을때나 같은 문자열을 회문 문자열이라고 함
 	//ex) wow, goog, 
-	//회문문자열일 경우 YES를 return , 아니면 NO를 return 하시오 와우!
-	
-	
+	//회문문자열일 경우 YES를 return , 아니면 NO를 return 하시오
 
+	public static void main(String[] args) {
+		TestStringSection T = new TestStringSection();
+		Scanner kb = new Scanner(System.in);
+		String str = kb.next();
+		System.out.println(T.solutionDuplDel(str)); 
+	}
+
+	public String solutionDuplDel(String str) {
+		
+		//고전적인방법
+		// int len = str.length();
+		// str = str.toUpperCase();
+		// for(int i =0; i < len/2; i++) {
+		// 	//이해가 안되면 대입해볼것
+		// 	//StutS = S와 StutS의 length인 5-0-1 =4 StutS의 4번째 인덱스와 비교하게됨 
+		// 	if(str.charAt(i) != str.charAt(len-i-1)) {
+		// 		return "NO";
+		// 	}
+		// }
+
+		//문자열을 뒤집어서 비교
+		String tmp = new StringBuilder(str).reverse().toString();
+		//equalsIgnoreCase = 대소문자 구분 안함
+		if(str.equalsIgnoreCase(tmp)){
+			return "YES";
+		} else {
+			return "NO";
+		}
+	}
+	*/
 }
