@@ -105,8 +105,8 @@ class TestStringSection {
 
 	//회문문자열 palindrome - 앞에서 읽을때나 뒤에서 읽을때나 같은 문자열을 회문 문자열이라고 함
 	//ex) wow, goog, 
-	//회문문자열일 경우 YES를 return , 아니면 NO를 return 하시오
-
+	//회문문자열일 경우 YES를 return , 아니면 NO를 return 하시오 와우!
+	
 	
 
 }
