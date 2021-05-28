@@ -203,7 +203,7 @@ class TestStringSection {
 			// System.out.println(s.charAt(i) + " " + i + " " + s.indexOf(s.charAt(i)));
 			System.out.println(s.split(t));
 		}
-		
+		 
 		
 		return Integer.parseInt(answer);
 	}
