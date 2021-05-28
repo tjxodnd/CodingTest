@@ -99,7 +99,7 @@ class TestStringSection {
 				answer+=str.charAt(i);
 			}
 		}
-		return answer;
+		return answer; 
 	}
 	*/
 
