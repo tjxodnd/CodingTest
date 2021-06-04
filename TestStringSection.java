@@ -210,6 +210,6 @@ class TestStringSection {
 		}
 		
  		return Integer.parseInt(answer);
-
+ 
 	}
 }
