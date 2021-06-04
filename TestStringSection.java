@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 class TestStringSection {
@@ -200,11 +201,15 @@ class TestStringSection {
 		String answer = "";
 
 		for(int i = 0; i < s.length(); i++) {
-			// System.out.println(s.charAt(i) + " " + i + " " + s.indexOf(s.charAt(i)));
-			System.out.println(s.split(t));
+			System.out.println(s.charAt(i) + " " + i + " " + s.indexOf(s.charAt(i)));
+			
 		}
 		
+		for(char x : s.toCharArray()){
+			System.out.println(x);
+		}
 		
-		return Integer.parseInt(answer);
+ 		return Integer.parseInt(answer);
+
 	}
 }
