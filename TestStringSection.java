@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -183,7 +184,7 @@ class TestStringSection {
 		}
 		return Integer.parseInt(answer);
 	}
-	*/
+	
 
 	//10. 가장 짧은 문자거리
 	//문제 : 첫번째줄에 문자열s와 문자t가 주어진다. 문자열과 문자는 소문자로만 주어짐, s의 각문자가 t와 떨어진 거리를 순서대로 출력한다
@@ -197,8 +198,9 @@ class TestStringSection {
 		System.out.println(T.solutionDuplDel(str,t)); 
 	}
 
-	public int solutionDuplDel(String s, String t) {
-		String answer = "";
+	public List<Integer> solutionDuplDel(String s, String t) {
+		
+		List<Integer> answerList = new ArrayList<Integer>();
 		//param : s = teachermode, t = e
 		//초기 숫자 p - 1000
 		//왼쪽으로 최초 for문으로 탐색, e를 만나면 0, 아닌문자면 + 1
@@ -233,22 +235,13 @@ class TestStringSection {
 			} else {
 				p++;
 				arrayInt2[i] = p;
+				if(arrayInt[i] > arrayInt2[i]) {
+					arrayInt[i] = arrayInt2[i];
+				}
 			}
+			answerList.add(arrayInt[i]);
 		}
-
-		for(int y = 0; y < arrayInt.length; y++) {
-			System.out.println(arrayInt[y]);
-		}
-
-		System.out.println("--------");
-
-		for(int y=0;y<arrayInt2.length;y++) {
-			System.out.println(arrayInt2[y]);
-		}
-
-		System.out.println("--------");
-		
- 		return 0;
- 
+ 		return answerList;
 	}
+	*/
 }
