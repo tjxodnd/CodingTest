@@ -199,17 +199,56 @@ class TestStringSection {
 
 	public int solutionDuplDel(String s, String t) {
 		String answer = "";
+		//param : s = teachermode, t = e
+		//초기 숫자 p - 1000
+		//왼쪽으로 최초 for문으로 탐색, e를 만나면 0, 아닌문자면 + 1
+		//string =   t  e a c h e r m o d e
+		//answer = 1001,0,1,2,3,0,1,2,3,4,0
+		
+		int p = 1000;
+		
+		int[] arrayInt = new int[s.length()];
+		int[] arrayInt2 = new int[s.length()];
 
-		for(int i = 0; i < s.length(); i++) {
-			System.out.println(s.charAt(i) + " " + i + " " + s.indexOf(s.charAt(i)));
-			
+		String[] array = s.split("");
+		for(int i = 0; i < array.length; i++) {
+			if(array[i].equals(t)){
+				p=0;
+				arrayInt[i] = p;
+			} else {
+				p++;
+				arrayInt[i] = p;
+			}
 		}
-		
-		for(char x : s.toCharArray()){
-			System.out.println(x);
+
+		p = 1000;
+
+		//for문을 뒤에서부터 태운후
+		//10번 인덱스부터이기때문에 -1
+		//arrayInt[i] 보다 arrayInt2의 값중 작은값을 arrayInt에 다시 할당
+		for(int i = array.length-1; i >= 0; i--) {
+			if(array[i].equals(t)){
+				p=0;
+				arrayInt2[i] = p;
+			} else {
+				p++;
+				arrayInt2[i] = p;
+			}
 		}
+
+		for(int y = 0; y < arrayInt.length; y++) {
+			System.out.println(arrayInt[y]);
+		}
+
+		System.out.println("--------");
+
+		for(int y=0;y<arrayInt2.length;y++) {
+			System.out.println(arrayInt2[y]);
+		}
+
+		System.out.println("--------");
 		
- 		return Integer.parseInt(answer);
+ 		return 0;
  
 	}
 }
