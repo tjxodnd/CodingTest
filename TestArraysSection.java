@@ -122,7 +122,7 @@ class TestArraysSection {
 
  		return answer;
 	}
-    */
+    
 
     //4. 피보나치 수열
 	//문제 : N이 입력되면 N자리 피보나치 수열을 출력하시오.
@@ -135,10 +135,41 @@ class TestArraysSection {
 		System.out.println(T.solution(n)); 
 	}
 
-	public List<Integer> solution(int n) {
-        List<Integer> answer = new ArrayList<Integer>();
-       
+	public ArrayList<Integer> solution(int n) {
+        ArrayList<Integer> answer = new ArrayList<Integer>();
+        answer.add(1);
+        answer.add(1);
+        for(int i = 2; i < n; i++) {
+            answer.add(answer.get(i-2)+answer.get(i-1));
+        }  
+ 		return answer;
+	}
+    */
+
+    //5. 소수(에라토스테네스 체)
+	//문제 : N이 입력되면 1부터 N까지의 소수의 개수를 출력하시오
+	//input : 20
+	//output : (2,3,5,7,11,13,17,19) 8
+	public static void main(String[] args) {
+		TestArraysSection T = new TestArraysSection();
+		Scanner kb = new Scanner(System.in);
+		int n = kb.nextInt();
+		System.out.println(T.solution(n)); 
+	}
+
+	public int solution(int n) {
+        int answer = 0;
+        
+        for(int i = 2; i < n; i++) {
+            if(n%i!=0){
+                answer++;
+                System.out.println(i);
+            }
+        }
+        
+        
 
  		return answer;
 	}
+
 }
