@@ -275,36 +275,29 @@ class TestStringSection {
 
  		return answer;
 	}
-	*/
+	
 
 	//12. 암호
-	//문제 : 압축된 문자열 출력
-	//input : KKHSSSSSSSE 
-	//output : K2HS7E
+	//문제 : 암호화된 문자열 출력 #은 이진수의 1로, *은 이진수의0으로 변환하고 처음 입력받은 숫자만큼 암호화스트링을 끊어서 변환하면 01010110이런식으로 된걸 10진수화한 값을 아스키코드값으로 매칭해서 출력
+	//input : 4, #****###**#####**#####**##** 
+	//output : COOL
 	public static void main(String[] args) {
 		TestStringSection T = new TestStringSection();
 		Scanner kb = new Scanner(System.in);
-		String str = kb.nextLine();
-		System.out.println(T.solution(str)); 
+		int n = Integer.parseInt(((String)kb.nextLine()));
+		String s = kb.nextLine();
+		System.out.println(T.solution(n,s)); 
 	}
 
-	public String solution(String s) {
+	public String solution(int n, String s) {
 		String answer = "";
-		s = s+" ";
-		int cnt = 1;
-		
-		for(int i = 0; i < s.length()-1; i++) {
-			if(s.charAt(i)==s.charAt(i+1)){
-				cnt++;
-			} else {
-				answer+=s.charAt(i);
-				if(cnt>1) {
-					answer+=String.valueOf(cnt);
-				}
-				cnt=1;
-			}
-		}
-
+        for (int i = 0; i < n; i++) {
+			String tmp = s.substring(0,7).replace("*", "0").replace("#", "1");
+			int num = Integer.parseInt(tmp, 2);//2진수로 넘기겠다
+			s = s.substring(7);
+			answer+=(char) num;
+        }
  		return answer;
 	}
+	*/
 }
