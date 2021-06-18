@@ -144,9 +144,9 @@ class TestArraysSection {
         }  
  		return answer;
 	}
-    */
+    
 
-    //5. 소수(에라토스테네스 체)
+    //5. 소수(에라토스테네스 체- )
 	//문제 : N이 입력되면 1부터 N까지의 소수의 개수를 출력하시오
 	//input : 20
 	//output : (2,3,5,7,11,13,17,19) 8
@@ -160,14 +160,138 @@ class TestArraysSection {
 	public int solution(int n) {
         int answer = 0;
         
+        int[] arr = new int[n+1];
         for(int i = 2; i < n; i++) {
-            if(n%i!=0){
+            if(arr[i] == 0) {
                 answer++;
-                System.out.println(i);
+                //j는 i의 배수로 돌아야 하기때문에 마지막에 j=j+i ex.)i가2일경우 2+2,4+2 이런식으로 돌게됨.
+                for(int j = i; j <= n; j=j+i) {
+                    arr[j] = 1;
+                }
             }
         }
         
  		return answer;
 	}
+     
 
+    //6. 뒤집은 소수
+	//문제 : N개의 자연수가 입력되면 자연수를 뒤집은 후 그 뒤집은 숫자가 소수이면 출력한다. 32를 뒤집으면 23, 23은 소수이니까 출력, 100은 뒤집으면 1(0은제외)
+	//input : 9, 32 55 62 20 250 370 200 30 100
+	//output : 23 2 73 2 3
+	public static void main(String[] args) {
+		TestArraysSection T = new TestArraysSection();
+		Scanner kb = new Scanner(System.in);
+		int n = kb.nextInt();
+
+        int[] arr = new int[n];
+
+        for(int i = 0; i < n; i++) {
+            arr[i] = kb.nextInt();
+        }
+
+		System.out.println(T.solution(n,arr)); 
+	}
+
+    public boolean isPrime(int n) {
+        if(n==1) return false;
+         for(int i = 2; i < n; i++) {
+            if(n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+        
+    }
+
+	public ArrayList<Integer> solution(int n, int[] arr) {
+        ArrayList<Integer> answer = new ArrayList<Integer>();
+        
+        //res = res * 10 + t
+        //tmp = 1230
+        //t=0
+        //res = 0 * 10 + 0
+        //tmp = 123
+        //t=3
+        //res = 0*10+3 // 3
+        //
+        
+        for(int i = 0; i < n; i++) {
+            int tmp = arr[i];
+            int res = 0;
+            while(tmp>0) {
+                int t = tmp % 10;
+                res = res * 10 + t;
+                tmp = tmp/10;
+            }
+            if(isPrime(res)){
+                answer.add(res);
+            }
+        }
+        
+ 		return answer;
+	}
+    
+
+    //7. 점수계산
+	//문제 : 채점결과가 주어졌을때 총점을 계산하는 프로그램을 작성해라(연속으로 맞을경우 sum++ 가다가 틀릴경우는 sum = 0)
+	//input : 1 0 1 1 1 0 0 1 1 0 
+	//output : 1 + 0 + 1 + 2 + 3 + 0 + 0 + 1 +2 = 10
+	public static void main(String[] args) {
+		TestArraysSection T = new TestArraysSection();
+		Scanner kb = new Scanner(System.in);
+		int n = kb.nextInt();
+
+        int[] arr = new int[n];
+        for(int i = 0; i < n; i++) {
+            arr[i] = kb.nextInt();
+        }
+
+		System.out.println(T.solution(n,arr)); 
+	}
+
+	public int solution(int n, int[] arr) {
+        int answer = 0;
+        int[] anArr = new int[n];
+        int sum = 0;
+        for(int i = 0; i < arr.length; i++) {
+            if(arr[i] == 1) {
+                sum++;
+                anArr[i] = sum;
+            } else {
+                sum = 0;
+                anArr[i] = sum;
+            }
+        }
+
+        for(int j = 0; j < anArr.length; j++) {
+            answer += anArr[j];
+        }
+
+ 		return answer;
+	}
+    */
+
+    //8. 등수구하기
+    //문제 : 등수를 구하라
+	//input : 5, 32 55 44 44 23 4
+	//output :   3  1  2  2  4  5
+	public static void main(String[] args) {
+		TestArraysSection T = new TestArraysSection();
+		Scanner kb = new Scanner(System.in); 
+		int n = kb.nextInt();
+
+        int[] arr = new int[n];
+        for(int i = 0; i < n; i++) {
+            arr[i] = kb.nextInt();
+        }
+
+		System.out.println(T.solution(n,arr)); 
+	}
+
+	public ArrayList<Integer> solution(int n, int[] arr) {
+        ArrayList<Integer> answer = new ArrayList<Integer>();
+        
+ 		return answer;
+	}
 }
