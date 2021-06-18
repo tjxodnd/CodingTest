@@ -167,8 +167,6 @@ class TestArraysSection {
             }
         }
         
-        
-
  		return answer;
 	}
 
