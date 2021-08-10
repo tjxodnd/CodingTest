@@ -6,7 +6,7 @@ import java.util.Scanner;
 class TestStringSection {
 
 
-	/*
+/*
 	// 
 	//숫자 n, n개의 단어를 입력받았을때 뒤집힌 String이 들어있는 ArrayList<String> 을 return하시오.
 	//4. 단어 뒤집기(StringBuilder) 이용
@@ -28,33 +28,47 @@ class TestStringSection {
 		
 		//전체뒤집기
 		for(String x : str){
-			//StringBuidler 생성자 메소드중 reverse()는 뒤집고 StringBuilder객체에서 String 객체로 다시 toString() 한후 할당
-			//String 연산이 많아지면 builder를 사용하기도함
-			String tmp = new StringBuilder(x).reverse().toString();
-			answer.add(tmp);
+//			//StringBuidler 생성자 메소드중 reverse()는 뒤집고 StringBuilder객체에서 String 객체로 다시 toString() 한후 할당
+//			//String 연산이 많아지면 builder를 사용하기도함
+//			String tmp = new StringBuilder(x).reverse().toString();
+//			answer.add(tmp);
+
+            char[] s = x.toCharArray();
+            int lt = 0;
+            int rt = x.length()-1;
+            while(lt<rt) {
+                char tmp = s[lt];
+                s[lt] = s[rt];
+                s[rt] = tmp;
+                lt++;
+                rt--;
+            }
+            String zz = String.valueOf(s);
+            answer.add(zz);
 		}
-		
+
+
 
 		//특정문자 뒤집기
-		for(String x : str){
-			char[] s = x.toCharArray();
-			 //-1을 하는이유는 0번 index부터 시작이기때문
-			int lt = 0, rt = x.length()-1;
-			while(lt<rt){
-				char tmp = s[lt];
-				s[lt] = s[rt];
-				s[rt]= tmp;
-				lt++;
-				rt--;
-			}
-			//valueOf는 배열을 String으로 바꿔준다.
-			String tmp = String.valueOf(s);
-			answer.add(tmp);
-		}
+//		for(String x : str){
+//			char[] s = x.toCharArray();
+//			 //-1을 하는이유는 0번 index부터 시작이기때문
+//			int lt = 0, rt = x.length()-1;
+//			while(lt<rt){
+//				char tmp = s[lt];
+//				s[lt] = s[rt];
+//				s[rt]= tmp;
+//				lt++;
+//				rt--;
+//			}
+//			//valueOf는 배열을 String으로 바꿔준다.
+//			String tmp = String.valueOf(s);
+//			answer.add(tmp);
+//		}
 
 		return answer;
 	}
-	
+
 	//입력받은 문자열중 특수문자열이 아닌 알파벳만 위치를 뒤집어서 return 하시오.
 	//5.특수문자(알파벳이 아닐때) 뒤집기(toCharArray[])
 	public String solutionSpecial(String str) {

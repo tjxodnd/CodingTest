@@ -1,8 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Arrays;
+import java.util.*;
 
 //배열부분
 class TestArraysSection {
@@ -291,7 +287,12 @@ class TestArraysSection {
 
 	public ArrayList<Integer> solution(int n, int[] arr) {
         ArrayList<Integer> answer = new ArrayList<Integer>();
-        
+        Arrays.sort(arr);
+        Map<String, Object> gradeMap = new HashMap<>();
+        for(int i = 0; i < arr.length; i++) {
+
+		}
+
  		return answer;
 	}
 }
