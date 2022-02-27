@@ -291,6 +291,7 @@ class TestArraysSection {
         Map<String, Object> gradeMap = new HashMap<>();
         for(int i = 0; i < arr.length; i++) {
 			System.out.println("d");
+			System.out.println("d");
 		}
 
  		return answer;
