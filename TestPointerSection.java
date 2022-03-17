@@ -62,8 +62,8 @@ public class TestPointerSection {
         }
 
         Arrays.sort(c);
-        for(int css : c) {
-            System.out.println(css);
+        for(int cs : c) {
+            System.out.println(cs);
         }
     }
 
