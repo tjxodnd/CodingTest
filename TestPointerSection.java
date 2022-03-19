@@ -43,28 +43,35 @@ public class TestPointerSection {
 
     // 2. 공통원소 출력후 오름차순 정렬
     // input 1 : {1,3,5,8}
-    // input 2 : {1,2,3,4,5,6,7,9}
+    // input 2 : {1,2,3,4,5,6,7,9}`
     // output : {1,3,5}
+//    public static void solution() {
+//        int[] a = {3,8,5,1};
+//        int[] b = {4,2,6,3,8,1,5,9};
+//
+//        int[] c = new int[b.length];
+//        int p = 0;
+//
+//        for(int i = 0; i < a.length; i++) {
+//            for(int j = 0; j < b.length; j++) {
+//                if(a[i] == b[j]) {
+//                    c[p] = b[j];
+//                    p++;
+//                }
+//            }
+//        }
+//
+//        Arrays.sort(c);
+//        for(int cs : c) {
+//            System.out.println(cs);
+//        }
+//    }
+
+
+    // 3. 최대매출
+    // input : N일동안의 매출기록, 연속된 K일 동안의 최대 매출액
     public static void solution() {
-        int[] a = {3,8,5,1};
-        int[] b = {4,2,6,3,8,1,5,9};
 
-        int[] c = new int[b.length];
-        int p = 0;
-
-        for(int i = 0; i < a.length; i++) {
-            for(int j = 0; j < b.length; j++) {
-                if(a[i] == b[j]) {
-                    c[p] = b[j];
-                    p++;
-                }
-            }
-        }
-
-        Arrays.sort(c);
-        for(int cs : c) {
-            System.out.println(cs);
-        }
     }
 
 }
