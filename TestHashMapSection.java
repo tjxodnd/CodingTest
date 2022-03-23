@@ -40,30 +40,24 @@ public class TestHashMapSection {
         boolean answer = true;
 
         String a = "ABCDabcdABABcdCd";
-        String b = "abcdABCDABcdCdAB";
+        String b = "abcdABCDABcdCdABC";
 
         a = a.toLowerCase(Locale.ROOT);
         b = b.toLowerCase(Locale.ROOT);
 
         HashMap<String, Integer> mapA = new HashMap<>();
-        HashMap<String, Integer> mapB = new HashMap<>();
 
         for(String aTmp : a.split("")){
             mapA.put(aTmp ,mapA.getOrDefault(aTmp, 0)+1);
         }
-        for(String bTmp : b.split("")){
-            mapB.put(bTmp ,mapB.getOrDefault(bTmp, 0)+1);
-        }
 
-        for(String aKey : mapA.keySet()) {
-            for(String bKey : mapB.keySet()) {
-                if(aKey.equals(bKey) && mapA.get(aKey) != mapB.get(bKey)) {
-                    answer = false;
-                }
+        for(String bTmp : b.split("")) {
+            if(!mapA.containsKey(bTmp) || mapA.get(bTmp) == 0) {
+                answer = false;
             }
+            mapA.put(bTmp, mapA.get(bTmp)-1);
         }
-
-        System.out.println("answer::"+answer);
+        System.out.println(answer);
 
     }
 
