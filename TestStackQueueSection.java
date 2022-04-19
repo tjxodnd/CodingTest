@@ -45,36 +45,67 @@ public class TestStackQueueSection {
 //    }
 
     //3. 크레인 인형뽑기(카카오)
-    //input  :
-    //output :
+    //input  : {{0,0,0,0,0},{0,0,1,0,3},{0,2,5,0,1},{4,2,4,4,2},{3,5,1,3,1}} , {1,5,3,5,1,2,1,4}
+    //output : 4
+//    public static void solution() {
+//        int[][] board = {{0,0,0,0,0},{0,0,1,0,3},{0,2,5,0,1},{4,2,4,4,2},{3,5,1,3,1}};
+//        int[] num = {1,5,3,5,1,2,1,4};
+//
+//        Stack<Integer> stack = new Stack<>();
+//        int answer = 0;
+//
+//        //num 길이만큼 반복
+//        for(int pos : num) {
+//            //i는 깊이를 뜻함
+//            for(int i =0; i < board.length; i++) {
+//                //1번째 열에서 i행만큼 내려갔을때 0이면 패스, 아니면 담아놨다가 스택의 최상단값 가져와서
+//                //담아놓은 정수와 같으면 answer+=2 아니면 스택에 푸시
+//                if(board[i][pos-1] != 0) {
+//                    int tmp = board[i][pos-1];
+//                    board[i][pos-1] = 0;
+//                    if(!stack.isEmpty() && stack.peek() == tmp) {
+//                        answer+=2;
+//                        //stack의 peek는 값을 없애지는 않고 값만 return
+//                        //stack의 pop은 최상단값을 꺼냄
+//                        stack.pop();
+//                    } else {
+//                        stack.push(tmp);
+//                    }
+//                    //한번 스택에 쌓거나 빼왔으면 num값번째 열에서는 또 반복하면 안되니 break처리해서 새로운 반복 타게 만들어야함
+//                    break;
+//                }
+//            }
+//        }
+//
+//        System.out.println("answer::"+answer);
+//    }
+
+    //4. 후위식연산(postFix)
+    //input : 352+*9-
+    //output : 12
     public static void solution() {
-        int[][] board = {{0,0,0,4,3},{0,0,2,2,5},{0,1,5,4,1},{0,0,0,4,3},{0,3,1,2,1}};
-        int[] num = {1,5,3,5,1,2,1,4};
+        int lt, rt = 0;
+        String str = "352+*9-";
+
         Stack<Integer> stack = new Stack<>();
-        int answer = 0;
 
-        for(int i = 0; i < num.length; i++) {
-            if(!stack.isEmpty()) {
-
+        for(char i : str.toCharArray()) {
+            if(Character.isDigit(i)) {
+                stack.push(Integer.parseInt(String.valueOf(i)));
             } else {
-                int pushNum = 0;
-                int[] arr = board[num[i]-1];
-                int pos = 0;
-                for(int y = 0; y < arr.length; y++){
-                    if(arr[y] <= 0) {
-                        pos++;
-                    } else {
-                        pushNum = arr[pushNum];
-                        board[num[i]-1][pos] = 0;
-                    }
+                rt = stack.pop();
+                lt = stack.pop();
+                if("+".equals(String.valueOf(i))) {
+                    stack.push(lt+rt);
+                } else if("-".equals(String.valueOf(i))){
+                    stack.push(lt-rt);
+                } else {
+                    stack.push(lt*rt);
                 }
-                stack.push(pushNum);
             }
         }
 
-        System.out.println(answer);
-        System.out.println(stack);
+        System.out.println("answer::"+stack.pop());
 
     }
-
 }
