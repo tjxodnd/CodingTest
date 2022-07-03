@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class TestStackQueueSection {
@@ -83,29 +85,80 @@ public class TestStackQueueSection {
     //4. 후위식연산(postFix)
     //input : 352+*9-
     //output : 12
+//    public static void solution() {
+//        int lt, rt = 0;
+//        String str = "352+*9-";
+//
+//        Stack<Integer> stack = new Stack<>();
+//
+//        for(char i : str.toCharArray()) {
+//            if(Character.isDigit(i)) {
+//                stack.push(Integer.parseInt(String.valueOf(i)));
+//            } else {
+//                rt = stack.pop();
+//                lt = stack.pop();
+//                if("+".equals(String.valueOf(i))) {
+//                    stack.push(lt+rt);
+//                } else if("-".equals(String.valueOf(i))){
+//                    stack.push(lt-rt);
+//                } else {
+//                    stack.push(lt*rt);
+//                }
+//            }
+//        }
+//
+//        System.out.println("answer::"+stack.pop());
+//
+//    }
+
+    //5. 쇠막대기문제
+    //input : ()(((()())(())()))(())
+    //output : 17
+    //input 2 : (((()(()()))(())()))(()())
+//    public static void solution() {
+//        String str = "(((()(()()))(())()))(()())";
+//        Stack<String> stack = new Stack<>();
+//
+//        int answer = 0;
+//        String tmp = "";
+//
+//        for(String s : str.split("")) {
+//            tmp = s;
+//            if("(".equals(s)) {
+//                stack.push(s);
+//            } else {
+//                if(s.equals(stack.pop())) {
+//                    answer++;
+//                } else {
+//                    answer+=stack.size();
+//                }
+//            }
+//        }
+//        System.out.println("answer:"+answer);
+//    }
+
+    //6. 공주구하기
+    //input 8 3
+    //output 7
     public static void solution() {
-        int lt, rt = 0;
-        String str = "352+*9-";
+        int n = 8;
+        int k = 3;
 
-        Stack<Integer> stack = new Stack<>();
-
-        for(char i : str.toCharArray()) {
-            if(Character.isDigit(i)) {
-                stack.push(Integer.parseInt(String.valueOf(i)));
-            } else {
-                rt = stack.pop();
-                lt = stack.pop();
-                if("+".equals(String.valueOf(i))) {
-                    stack.push(lt+rt);
-                } else if("-".equals(String.valueOf(i))){
-                    stack.push(lt-rt);
-                } else {
-                    stack.push(lt*rt);
-                }
-            }
+        Queue<Integer> queue = new LinkedList<>();
+        for(int i = 1; i <= n; i++) {
+            queue.add(i);
         }
 
-        System.out.println("answer::"+stack.pop());
+        while(queue.size() <= 1) {
+            int first = 0;
+            int second = 0;
+
+            int peek = queue.poll();
+
+        }
+
+
+
 
     }
 }
