@@ -10,34 +10,64 @@ public class TestSortSection {
 //        int arr[] = {13,5,11,7,23,15};
 //        //길이의 이전까지만 도는 이유는 마지막값은 항상 제일 큰 값이 있기 때문에 굳이 마지막까지 돌지않아도됨
 //        for(int i = 0; i < arr.length-1; i++) {
+//            //작은값의 인덱스를 우선 구하기위해 idx 변수선언
 //            int idx = i;
-//            for(int j = 1; j < arr.length; j++) {
+//
+//            //i번째의 +1 부터 돌아야함
+//            //이부분은 작은게 나오자마자 바꾸는것이 아닌 제일 작은값의 index를 찾기위한 for문임
+//            for(int j = i+1; j < arr.length; j++) {
 //                if(arr[idx] > arr[j]) {
-//                    int tmp = arr[idx];
-//                    arr[idx] = arr[j];
-//                    arr[j] = tmp;
 //                    idx = j;
 //                }
 //            }
+//            int tmp = arr[i];
+//            arr[i] = arr[idx];
+//            arr[idx] = tmp;
 //        }
+//
 //        for(int j : arr) {
 //            System.out.print(j+",");
 //        }
 //    }
 
-    //2. 버블정렬
-    // input : {13,5,11,7,23,15}
-    // output : 5,7,11,13,15,23
+//    //2. 버블정렬
+//    // input : {13,5,11,7,23,15}
+//    // output : 5,7,11,13,15,23
 //    public static void solution() {
 //        int arr[] = {13,5,11,7,23,15};
 //
-//        for(int i = 0; i < arr.length-1; i++) {
-//            int tmp = arr[i];
-//            if(arr[i] > arr[i+1]) {
-//                arr[i] = arr[i+1];
-//                arr[i+1] = tmp;
+//        for(int z = 0; z < arr.length-1; z++) {
+//            for(int i = 0; i < arr.length-1;i++) {
+//                int tmp = arr[i];
+//                if(arr[i] > arr[i+1]) {
+//                    arr[i] = arr[i+1];
+//                    arr[i+1] = tmp;
+//                }
+//                tmp = 0;
 //            }
 //        }
+//
+//        for(int j : arr) {
+//            System.out.print(j+",");
+//        }
+//    }
+
+    //3. 삽입정렬
+    // input : {11,7,5,6,10,9}
+    // output : 5,6,7,9,10,11
+//    public static void solution() {
+//        int arr[] = {11,7,5,6,10,9};
+//
+//        for(int i = 1; i < arr.length; i++) {
+//            int tmp = arr[i];
+//            for(int j = i-1; j >= 0; j--) {
+//                if(arr[j] > tmp) {
+//                    arr[j+1] = arr[j];
+//                    arr[j] = tmp;
+//                }
+//            }
+//        }
+//
 //        for(int j : arr) {
 //            System.out.print(j+",");
 //        }
@@ -50,26 +80,12 @@ public class TestSortSection {
         int arr[] = {1,2,3,2,6,2,3,5,7};
         int cache[] = new int[5];
 
-        for(int x : arr) {
-            for(int i = 0; i < arr.length; i++) {
-                int pos = -1;
-                //cache heat일 경우 해당 인덱스를 저장한다.
-                if(arr[i] == x) {
-                    pos = i;
-                }
-                //cache miss일경우
-                if(pos == -1) {
-                    for(int z = arr.length-1; z >= 1; z--) {
-                        arr[z] = arr[z-1];
-                    }
-                    cache[0] = x;
-                }
-                //cache hit일경우 처리
-                else {
-                    for(int z = pos; z >= 1; z--) {
-                        cache[z] = cache[z-1];
-                    }
-                    cache[0] = x;
+        for(int i = 1; i < arr.length; i++) {
+            int tmp = arr[i];
+            for(int j = i-1; j >= 0; j--) {
+                if(arr[j] > tmp) {
+                    arr[j+1] = arr[j];
+                    arr[j] = tmp;
                 }
             }
         }
