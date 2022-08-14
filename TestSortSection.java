@@ -1,6 +1,13 @@
+import java.io.*;
+import java.net.Socket;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
+import java.util.Stack;
+
 public class TestSortSection {
     public static void main(String[] args) {
-        solution();
+         solution();
     }
 
     //1. 선택정렬
@@ -73,27 +80,45 @@ public class TestSortSection {
 //        }
 //    }
 
-    //3. LRU 알고리즘
+    //4. LRU 알고리즘
     //input : 5 9 , 1 2 3 2 6 2 3 5 7
     //output : 7 5 3 2 6
-    public static void solution() {
-        int arr[] = {1,2,3,2,6,2,3,5,7};
-        int cache[] = new int[5];
+//    public static void solution() {
+//        int arr[] = {1,2,3,2,6,2,3,5,7};
+//        int cache[] = new int[5];
+//
+//        for(int x : arr) {
+//            int idx = cache.length-1;
+//            for(int j = 0; j < cache.length; j++) {
+//                if(cache[j] == x) {
+//                    idx = j;
+//                    break;
+//                }
+//            }
+//
+//            for(int z = idx; z > 0; z--) {
+//                cache[z] = cache[z-1];
+//            }
+//            cache[0] = x;
+//
+//        }
+//
+//        for(int j : cache) {
+//            System.out.print(j+",");
+//        }
+//
+//    }
 
-        for(int i = 1; i < arr.length; i++) {
-            int tmp = arr[i];
-            for(int j = i-1; j >= 0; j--) {
-                if(arr[j] > tmp) {
-                    arr[j+1] = arr[j];
-                    arr[j] = tmp;
-                }
+    //5.중복확인
+    public static void solution() {
+        int arr[] = {44,135,666,23,55,44,125};
+        Arrays.sort(arr);
+        for(int i = 0; i < arr.length-1 ;i++) {
+            if(arr[i] == arr[i+1]) {
+                System.out.println("D");
+                return;
             }
         }
-
-        for(int j : cache) {
-            System.out.print(j+",");
-        }
-
     }
 
 }
